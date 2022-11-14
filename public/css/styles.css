@@ -2,3 +2,13 @@
     width: 50px;
     margin-left: -3rem;
 }
+
+.btn-primary{
+    background-color: #f2a340;
+    border: 2px solid #c28008;
+}
+
+.btn-primary:hover{
+    background-color: #c28008;
+    border: 2px solid #c28008;
+}
