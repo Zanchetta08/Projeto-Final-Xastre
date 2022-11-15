@@ -16,6 +16,7 @@ margin-left: -3rem;
 }
 
 .btn-primary{
+margin-top: 15px;
 background-color: #2a251f;
 border: 2px solid #7f0072;
 }
@@ -32,6 +33,10 @@ h1 {
 }
 .form-group{
     color: aliceblue; 
+}
+
+.form-group label{
+    font-size: 20px;
 }
 </style>
 

@@ -18,7 +18,8 @@ margin-left: -3rem;
 
 .btn-primary{
     background-image: radial-gradient(circle, #811478, #781173, #700f6e, #670c68, #5f0963);
-border: 2px solid #7f0072;
+    border: 2px solid #7f0072;
+    margin-top: 20px;
 }
 
 
@@ -37,21 +38,20 @@ border: 2px solid #171614;
 <div class="col-md10 offset-md-1">
     <div class="row">
         
-        <div id="image-container" class="col-md-6">
+        <div id="image-container" class="col-md-4">
             <img src="/img/avatares/{{ Auth::user()->image }}.png" alt="">
         </div>
 
-        <div id="info-container" class="col-md-5">
+        <div id="info-container" class="col-md-6">
             <h1>{{ Auth::user()->name }}</h1>
             <h3>Email: {{ Auth::user()->email }}</</h3>
             <h3>CPF: {{ Auth::user()->cpf }}</</h3>
             <h3>Endereço: {{ Auth::user()->endereco }}</</h3>
-            <a href="/home/edit/{{Auth::user()->id}}"class="btn btn-primary">Editar</a>
-            <a href="#"class="btn btn-primary">Deletar</a>
+            <div>
+                <a href="/home/edit/{{Auth::user()->id}}"class="btn btn-primary">Editar</a>
+                <a href="#"class="btn btn-primary">Deletar</a>
+            </div>
         </div>
-        <div>
-            <a href="/home/edit/{{Auth::user()->id}}">Editar</a>
-            <a href="#">Deletar</a>
     </div>
 
 
