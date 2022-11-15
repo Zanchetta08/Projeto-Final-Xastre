@@ -19,7 +19,7 @@ margin-left: -3rem;
 .btn-primary{
     background-image: radial-gradient(circle, #811478, #781173, #700f6e, #670c68, #5f0963);
     border: 2px solid #7f0072;
-    margin-top: 20px;
+    
 }
 
 
@@ -30,6 +30,11 @@ border: 2px solid #171614;
 #info-container{
     background-image: radial-gradient(circle, #ffffff, #efefef, #dfdfdf, #cfcfcf, #c0c0c0);
     border-radius: 15px;
+}
+
+#info-container form{
+    display: inline-block;
+    margin-top: 15px;
 }
 </style>
 
@@ -47,9 +52,13 @@ border: 2px solid #171614;
             <h3>Email: {{ Auth::user()->email }}</</h3>
             <h3>CPF: {{ Auth::user()->cpf }}</</h3>
             <h3>Endereço: {{ Auth::user()->endereco }}</</h3>
-            <div>
-                <a href="/home/edit/{{Auth::user()->id}}"class="btn btn-primary">Editar</a>
-                <a href="#"class="btn btn-primary">Deletar</a>
+            <div class="buttons-container">
+                <a href="/home/edit/{{Auth::user()->id}}" class="btn btn-primary"><ion-icon name="sync-outline"></ion-icon>Editar</a>
+                <form action="/home/{{ Auth::user()->id }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Deletar</button>
+                </form>
             </div>
         </div>
     </div>
