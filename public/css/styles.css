@@ -1,14 +1,30 @@
+
+body{
+
+    background-image: url(https://thumbs.dreamstime.com/b/dark-technology-background-vector-big-data-purple-digital-connection-high-wireless-texture-visualization-screen-wireframe-160622718.jpg);
+    }
+
+
+
 .navbar-brand img {
     width: 50px;
     margin-left: -3rem;
 }
 
 .btn-primary{
-    background-color: #f2a340;
-    border: 2px solid #c28008;
+    background-image: radial-gradient(circle, #811478, #781173, #700f6e, #670c68, #5f0963);
+    border: 2px solid #0d0c0d;
 }
 
+
 .btn-primary:hover{
-    background-color: #c28008;
-    border: 2px solid #c28008;
+    background-image: radial-gradient(circle, #811478, #781173, #700f6e, #670c68, #5f0963);
+    border: 2px solid #1f1e1b;
 }
+
+
+
+
+
+
+
