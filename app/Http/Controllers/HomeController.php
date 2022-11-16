@@ -29,12 +29,12 @@ class HomeController extends Controller
      
     public function show(){
 
-        return view ('show');
+        return view ('users.show');
     } 
 
     public function edit(){
 
-        return view ('edit');
+        return view ('users.edit');
     }
 
     public function destroy($id) {

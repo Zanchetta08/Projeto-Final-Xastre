@@ -21,10 +21,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/home/show', [App\Http\Controllers\HomeController::class,'show']);
-Route::get('/home/edit/{id}', [App\Http\Controllers\HomeController::class,'edit']);
-Route::put('/home/update/{id}', [App\Http\Controllers\HomeController::class,'update']);
-Route::delete('/home/{id}', [App\Http\Controllers\HomeController::class,'destroy']);
+Route::get('/users/show', [App\Http\Controllers\HomeController::class,'show']);
+Route::get('/users/edit/{id}', [App\Http\Controllers\HomeController::class,'edit']);
+Route::put('/users/update/{id}', [App\Http\Controllers\HomeController::class,'update']);
+Route::delete('/users/{id}', [App\Http\Controllers\HomeController::class,'destroy']);
 
 
 
