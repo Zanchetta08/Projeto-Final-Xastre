@@ -4,8 +4,11 @@ body{
 }
 
 header{
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
+    background-color: linear-gradient(to left, #38103b, #400f44, #490e4c, #520b55, #5b065e);
+}
+
+.nav-link{
+    color: #fff;
 }
 
 .navbar-brand img {

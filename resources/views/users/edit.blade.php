@@ -29,7 +29,7 @@
             <label for="title">Endereço:</label>
             <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço" value="{{ Auth::user()->endereco }}">
         </div>
-        <input type="submit" class="btn btn-primary" value="Salvar informações">
+        <input type="submit" class="btn btn-primary" value="Salvar">
     </form>
 </div>
 
