@@ -4,6 +4,10 @@
 
 @section('content')
 
+@guest 
+<h1>Você não está logado. Faça o login <a href="/">aqui</a></h1>
+@else
+
 <div class="col-md10 offset-md-1">
     <div class="row">
         
@@ -25,10 +29,10 @@
                 </form>
             </div>
         </div>
-    </div>
-
 
     </div>
 </div>
+
+@endguest
 
 @endsection

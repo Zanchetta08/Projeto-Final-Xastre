@@ -1,10 +1,31 @@
 
 body{
     background-image: linear-gradient(to left, #38103b, #400f44, #490e4c, #520b55, #5b065e);
+    min-height: 100vh;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+.row{
+    margin: 0;
+}
+
+container-fluid {
+    padding: 0;
 }
 
 header{
     background-color: linear-gradient(to left, #38103b, #400f44, #490e4c, #520b55, #5b065e);
+}
+
+.msg{
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
 }
 
 .nav-link{
@@ -50,10 +71,88 @@ header{
     font-size: 20px;
 }
 
+#cursos-form{
+    margin-bottom: 15px;
+}
+
+.nav-item{
+    margin-right: 25px;
+}
+
 h1 {
     color: aliceblue;
 }
 
+#search-container{
+    padding: 50px;
+    text-align: center;
+}
+
+#search-container h1{
+    color: #fff;
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+
+#search-container form{
+    width: 50%;
+    margin: 0 auto;
+}
+
+#cursos-container{
+    padding: 50px;
+}
+
+#cursos-container h2{
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+#cards-container{
+    display: flex;
+}
+
+#cursos-container .card {
+    flex: 1 1 0;
+    max-width: 25%;
+    border-radius: 10px;
+    padding: 0;
+    margin: 5px;
+}
+
+#cursos-container img {
+    max-height: 150px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card .card-title {
+    color: #212121;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.card-participants {
+    font-size: 14px;
+    color: #757575
+}
+
+.form-check img{
+    max-width: 300px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    padding: 10px;
+}
+
+#imagecurso-container img {
+    max-width: 400px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    padding: 10px;
+}
 
 
 

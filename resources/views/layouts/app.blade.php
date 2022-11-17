@@ -49,6 +49,9 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                    <a href="/cursos" class="nav-link">Cursos</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -77,6 +80,9 @@
 </header>
 
         <main class="py-4">
+            @if(session('msg'))
+                <p class="msg">{{ session('msg') }}</p>
+            @endif
             @yield('content')
         </main>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
