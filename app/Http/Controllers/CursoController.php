@@ -7,11 +7,18 @@ use App\Models\Curso;
 
 class CursoController extends Controller
 {
-    public function index()
-    {
-        $cursos = Curso::All();
-        return view ("cursos.curso",['cursos'=> $cursos]);
+    public function index(){
 
+        $search = request('search');
+        if($search){
+            $cursos = Curso::where([
+                ['nome', 'like', '%'.$search.'%']
+            ])->get();
+        }else{
+            $cursos = Curso::paginate(4);
+        }
+
+        return view ("cursos.curso",['cursos'=> $cursos, 'search' => $search]);
     }
 
     public function create(){
