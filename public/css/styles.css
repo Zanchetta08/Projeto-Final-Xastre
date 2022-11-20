@@ -7,7 +7,8 @@ body{
 }
 
 .row{
-    margin: 0;
+    margin: 0px;
+    margin-top: 25px;
 }
 
 container-fluid {
@@ -34,7 +35,7 @@ header{
 
 .navbar-brand img {
     width: 50px;
-    margin-left: -3rem;
+    margin-left: -13rem;
 }
 
 .btn-danger{
@@ -154,10 +155,25 @@ h1 {
     padding: 10px;
 }
 
-.cards-container p{
-    color: #fff;
-    padding: 30px;
+.dashboard-title-container {
+    margin-bottom: 30px;
+    margin-top: 30px
 }
+
+.dashboard-cursos-container th {
+    width: 25%;
+    color: #fff;
+}
+
+.dashboard-cursos-container td {
+    width: 25%;
+    color: #fff;
+}
+
+.aviso {
+    color: #fff;
+}
+
 
 
 

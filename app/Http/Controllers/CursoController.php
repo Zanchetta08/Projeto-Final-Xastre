@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Curso;
+use App\Models\User;
 
 class CursoController extends Controller
 {
@@ -36,6 +37,7 @@ class CursoController extends Controller
         $curso->minAlunos = $request->minAlunos;
         $curso->maxAlunos = $request->maxAlunos;
         $curso->image = $request->image;
+        $curso->user_id = 99999999999;
        
 
         $curso->save();
@@ -45,15 +47,25 @@ class CursoController extends Controller
     }
 
     public function show($id){
-        
         $curso = Curso::findOrFail($id);
+        $user = auth()->user();
+        $cursoAsParticipant = $curso->users; 
 
-        return view ('cursos.show', ['curso' => $curso]);
+
+        if(User::where('id', $curso->user_id)->exists()) {
+            $cursoProfessor = User::where('id', $curso->user_id)->first();
+            return view('cursos.show', ['curso' => $curso, 'cursoProfessor' => $cursoProfessor, 'cursoAsParticipant' => $cursoAsParticipant]);
+        }else{
+            $curso->user_id = 99999999999;
+            $cursoProfessor = User::where('id', $curso->user_id)->first();
+            return view('cursos.show', ['curso' => $curso, 'cursoProfessor' => $cursoProfessor, 'cursoAsParticipant' => $cursoAsParticipant]);
+        }
     }
 
     public function destroy($id){
-        
         Curso::findOrFail($id)->delete();
+        $user = auth()->user();
+        $user->cursosAsParticipant()->detach($id);
 
         return redirect('/cursos')->with('msg', 'Curso excluído com sucesso!');
     }
@@ -70,4 +82,33 @@ class CursoController extends Controller
 
         return redirect('/cursos')->with('msg', 'Curso editado com sucesso!');
     }  
+
+    public function joinCursoProf(Request $request){
+        $user = auth()->user();
+        Curso::findOrFail($request->id)->update(['user_id' => $user->id]);   
+
+        return redirect('/cursos')->with('msg', 'Curso assumido com sucesso!');
+    }
+
+    public function joinCursoAluno($id){
+        $user = auth()->user();
+        $user->cursosAsParticipant()->attach($id);
+        
+        return redirect('/cursos')->with('msg', 'Sua presença está confirmada!');
+    }
+
+    public function leaveCursoAluno($id){
+        $user = auth()->user();
+        $user->cursosAsParticipant()->detach($id);
+
+        return redirect('/cursos')->with('msg', 'Sua presença foi retirada!');
+    }
+
+    public function dashboard(){
+        
+        $user = auth()->user();
+        $cursosAsParticipant = $user->cursosAsParticipant;
+
+        return view('users.dashboard', ['cursosAsParticipant' => $cursosAsParticipant]);
+    }
 }

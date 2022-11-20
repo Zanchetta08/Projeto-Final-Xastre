@@ -31,9 +31,9 @@
         </div>
         @endforeach
         @if(count($cursos) == 0 && $search)
-            <p>Não foi possível encontrar nenhum curso com: {{ $search }}! <a href="/cursos">Ver todos</a></p>
+            <p class="aviso">Não foi possível encontrar nenhum curso com: {{ $search }}! <a href="/cursos">Ver todos</a></p>
         @elseif(count($cursos) == 0)
-            <p>Não há cursos disponíveis</p>
+            <p class="aviso">Não há cursos disponíveis</p>
         @endif
     </div>
 </div>
