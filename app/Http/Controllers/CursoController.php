@@ -119,7 +119,9 @@ class CursoController extends Controller
         
         $user = auth()->user();
         $cursosAsParticipant = $user->cursosAsParticipant;
+        $cursos = Curso::all();
+        $cursosAsProfessor = $cursos->where('user_id', $user->id);
 
-        return view('users.dashboard', ['cursosAsParticipant' => $cursosAsParticipant]);
+        return view('users.dashboard', ['cursosAsParticipant' => $cursosAsParticipant, 'cursosAsProfessor' => $cursosAsProfessor]);
     }
 }

@@ -11,6 +11,7 @@
     <h1>Cursos que estou participando</h1>
 </div>
 <div class="col-md-10 offset-md-1 dashboard-cursos-container">
+@if(Auth::user()->acesso == 'Aluno')
     @if(count($cursosAsParticipant) > 0)
         <table class="table">
             <thead>
@@ -19,7 +20,7 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Participantes</th>
                     <th scope="col">#</th>
-                </tr>
+                    </tr>
             </thead>
             <tbody>
                 @foreach($cursosAsParticipant as $curso)
@@ -39,9 +40,32 @@
             </tbody>
         </table>
     @else
-        <p>Você ainda não tem cursos a fazer, <a href="/cursos">confirme presença em algum</a></p>
+        <p class="aviso">Você ainda não tem cursos a fazer, <a href="/cursos">confirme presença em algum</a></p>
     @endif
-</div>
+@elseif(Auth::user()->acesso == 'Professor')
+    @if(count($cursosAsProfessor) > 0)
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Participantes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($cursosAsProfessor as $curso)
+                    <tr>
+                        <td scropt="row">{{ $loop->index + 1}}</td>
+                        <td><a href="/cursos/{{ $curso->id }}">{{ $curso->nome }}</a></td>
+                        <td>{{ count($curso->users) }}/{{ $curso->maxAlunos }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <p class="aviso">Você ainda não é professor de nenhum curso!</p>
+    @endif
+@endif
 
 @endguest
 
