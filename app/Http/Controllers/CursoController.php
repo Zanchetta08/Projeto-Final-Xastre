@@ -50,15 +50,20 @@ class CursoController extends Controller
         $curso = Curso::findOrFail($id);
         $user = auth()->user();
         $cursoAsParticipant = $curso->users; 
-
+        $count = 0;
+        foreach($cursoAsParticipant as $userr){
+            if($userr->id == $user->id){
+                $count = 1;
+            }
+        }
 
         if(User::where('id', $curso->user_id)->exists()) {
             $cursoProfessor = User::where('id', $curso->user_id)->first();
-            return view('cursos.show', ['curso' => $curso, 'cursoProfessor' => $cursoProfessor, 'cursoAsParticipant' => $cursoAsParticipant]);
+            return view('cursos.show', ['curso' => $curso, 'cursoProfessor' => $cursoProfessor, 'cursoAsParticipant' => $cursoAsParticipant, 'count' => $count]);
         }else{
             $curso->user_id = 99999999999;
             $cursoProfessor = User::where('id', $curso->user_id)->first();
-            return view('cursos.show', ['curso' => $curso, 'cursoProfessor' => $cursoProfessor, 'cursoAsParticipant' => $cursoAsParticipant]);
+            return view('cursos.show', ['curso' => $curso, 'cursoProfessor' => $cursoProfessor, 'cursoAsParticipant' => $cursoAsParticipant, 'count' => $count]);
         }
     }
 
@@ -102,6 +107,12 @@ class CursoController extends Controller
         $user->cursosAsParticipant()->detach($id);
 
         return redirect('/cursos')->with('msg', 'Sua presença foi retirada!');
+    }
+
+    public function leaveCursoProf($id){
+        Curso::findOrFail($id)->update(['user_id' => 99999999999]);
+
+        return redirect('/cursos')->with('msg', 'Você deixou de assumir o curso!');
     }
 
     public function dashboard(){

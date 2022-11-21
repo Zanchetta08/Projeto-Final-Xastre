@@ -36,10 +36,16 @@
                         @method('PUT')
                         <input type="submit" class="btn btn-primary" value="Assumir curso">
                     </form>
-                @elseif(Auth::user()->acesso == 'Aluno' && count($cursoAsParticipant) == 0)
+                @elseif(Auth::user()->acesso == 'Aluno' && $count == 0 && count($cursoAsParticipant) < $curso->maxAlunos)
                     <form action="/cursos/joinA/{{$curso->id}}" method="POST">
                         @csrf
                         <input type="submit" class="btn btn-primary" value="Confirmar presença">
+                    </form>
+                @elseif(Auth::user()->acesso == 'Professor' && $curso->user_id == Auth::user()->id)
+                     <form action="/cursos/leaveP/{{$curso->id}}" method="POST"> 
+                        @csrf
+                        @method('PUT')
+                        <input type="submit" class="btn btn-primary" value="Desistir do curso">
                     </form>
                 @endif
             </div>
