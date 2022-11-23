@@ -40,7 +40,7 @@
             </tbody>
         </table>
     @else
-        <p class="aviso">Você ainda não tem cursos a fazer, <a href="/cursos">confirme presença em algum</a></p>
+        <h4 class="aviso">Você ainda não tem cursos a fazer, <a href="/cursos"class="btn btn-primary">confirme presença em algum</a></h4>
     @endif
 @elseif(Auth::user()->acesso == 'Professor')
     @if(count($cursosAsProfessor) > 0)
