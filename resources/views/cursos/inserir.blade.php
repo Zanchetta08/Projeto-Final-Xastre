@@ -51,11 +51,14 @@
         <div class="form-check">
             <input class="form-check-input" type="radio" name="image" value="curso5">
             <img src="/img/cursos/curso5.jpg">
+
         </div>
 
         <input type="submit" class="btn btn-primary" value="Inserir curso">
     </form>
 </div>
+
 @endguest
+
 
 @endsection

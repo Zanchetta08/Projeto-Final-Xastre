@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Curso;
 
 class HomeController extends Controller
 {
@@ -39,6 +40,8 @@ class HomeController extends Controller
 
     public function destroy($id) {
         User::findOrFail($id)->delete();
+        $user = auth()->user();
+        $user->cursosAsParticipant()->detach($id);
 
         return redirect('/home')->with('msg','Perfil excluido com sucesso');
     } 

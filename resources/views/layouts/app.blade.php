@@ -49,8 +49,13 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
-                                    <a href="/cursos" class="nav-link">Cursos</a>
+                            <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Cursos
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/cursos/inserir">Inserir curso</a>
+                                    <a class="dropdown-item" href="/cursos">Ver cursos</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -60,6 +65,9 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/users/show">
                                         {{ __('Ver perfil') }}
+                                    </a>
+                                    <a class="dropdown-item" href="/dashboard">
+                                        Dashboard
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -79,11 +87,15 @@
         </nav>
 </header>
 
-        <main class="py-4">
-            @if(session('msg'))
-                <p class="msg">{{ session('msg') }}</p>
-            @endif
-            @yield('content')
+        <main>
+            <div class="container-fluid">
+                <div class="row">
+                    @if(session('msg'))
+                        <p class="msg">{{ session('msg') }}</p>
+                    @endif
+                    @yield('content')
+                </div>
+            </div>
         </main>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

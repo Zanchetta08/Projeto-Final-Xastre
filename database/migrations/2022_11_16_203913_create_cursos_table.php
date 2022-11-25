@@ -17,12 +17,14 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string("nome");
+
             $table->string("descricaoS");
             $table->string("descricaoC");
             $table->string("minAlunos");
             $table->string("maxAlunos");
             $table->string("image");
-         
+            $table->foreignId('user_id');
+
 
       
         });
