@@ -60,6 +60,10 @@ h1 {
             <label for="title">Endereço:</label>
             <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço" value="{{ Auth::user()->endereco }}">
         </div>
+        <div class="form-group">
+             <label for="title">Senha</label>
+             <input type="password" class="form-control" id="password" name="password" placeholder="Nova Senha">
+        </div>
         <input type="submit" class="btn btn-primary" value="Salvar informações">
     </form>
 </div>

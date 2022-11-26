@@ -47,8 +47,15 @@ class HomeController extends Controller
     } 
 
     public function update(Request $request){
-        User::findOrFail($request->id)->update($request->all());
+        $senha = $request->password;
+        $user = User::findOrFail($request->id);
+        $user->update($request->all());
+        $user->update(['password' => Hash::make($senha)]);
 
+         
         return redirect('/home');
+
+
     }   
+     
 }
