@@ -23,7 +23,8 @@ class CursoFactory extends Factory
             'maxAlunos' => "15",
             'minAlunos' => "5",
             'image' => "curso1",
-            "user_id" =>"99999999999"
+            "user_id" =>"99999999999",
+            "status" => "1"
 
            
 
@@ -45,7 +46,8 @@ class CursoFactory extends Factory
                                 'maxAlunos' => "15",
                                 'minAlunos' => "5",
                                 'image' => "curso3",
-                                "user_id" =>"99999999999"
+                                "user_id" =>"99999999999",
+                                "status" => "1"
                             
                             ];
 
@@ -66,7 +68,8 @@ class CursoFactory extends Factory
                                 'maxAlunos' => "15",
                                 'minAlunos' => "5",
                                 'image' => "curso4",
-                                "user_id" =>"99999999999"
+                                "user_id" =>"99999999999",
+                                "status" => "1"
                             
                             ];
 

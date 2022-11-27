@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
+        \App\Models\User::factory()->admin()->create();
         \App\Models\User::factory()->create([
 
             'name' => "secretaria",
@@ -33,6 +34,7 @@ class DatabaseSeeder extends Seeder
         ]);
         \App\Models\User::factory(count:15)->create();
         \App\Models\User::factory(count:5)->professo()->create();
+        
     
         
     
