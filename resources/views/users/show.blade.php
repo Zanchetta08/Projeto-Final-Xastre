@@ -20,6 +20,7 @@
             <h3>Email: {{ Auth::user()->email }}</</h3>
             <h3>CPF: {{ Auth::user()->cpf }}</</h3>
             <h3>Endereço: {{ Auth::user()->endereco }}</</h3>
+            <h3>Ultimo login: {{ Auth::user()->ultimo_login }}</</h3>
             <div class="buttons-container">
                 <a href="/users/edit/{{Auth::user()->id}}" class="btn btn-primary"><ion-icon name="pencil-outline"></ion-icon> Editar</a>
                 <form action="/users/{{ Auth::user()->id }}" method="POST">

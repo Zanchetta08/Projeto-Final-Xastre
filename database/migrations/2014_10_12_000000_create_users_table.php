@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('cpf');
             $table->string('endereco');
             $table->string('image'); 
+            $table->timestamp('ultimo_login')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
