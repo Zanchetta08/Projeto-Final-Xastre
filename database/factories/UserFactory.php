@@ -3,8 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use DB;
+use Iluminatte\Support\Facedes\Str;
+use Faker\Factory as Faker;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -16,17 +19,25 @@ class UserFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    
     public function definition()
     {
-        return [
-            'name' => "secretaria",
-            'email' => "secretaria@x6dev.edu",
-            'password' => Hash::make("secretaria123"),
-            'acesso' => "secretaria",
-            'cpf' => "1231231232",
-            'endereco' => "rua",
-            'image' => 'avatar0'
-        ];
+           $faker = Faker::create();
+           $senha = $faker->password;
+       return [
+            
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'password' => Hash::make($senha),
+                'acesso' => "Aluno",
+                'cpf'=> random_int(10000000000,99999999999),
+                'endereco' => $faker->address,
+                'image' => 'avatar0',
+                'movie' => 'nothing',
+           
+               
+            ];
+
     }
 
 
@@ -41,5 +52,29 @@ class UserFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
+    }
+
+    public function professo()
+
+    {
+            return $this->state (function (array $attributes){
+                    
+
+                        $faker = Faker::create();
+                        $senha = $faker->password;
+                            return [
+                            
+                                'name' => $faker->name,
+                                'email' => $faker->email,
+                                'password' => Hash::make($senha),
+                                'acesso' => "Professor",
+                                'cpf'=> random_int(10000000000,99999999999),
+                                'endereco' => $faker->address,
+                                'image' => 'avatar0',
+                        
+                            
+                            ];
+
+            });
     }
 }

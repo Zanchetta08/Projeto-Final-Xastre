@@ -68,5 +68,7 @@ class HomeController extends Controller
         }
 
         return redirect('/cursos')->with('msg', 'Perfil editado com sucesso');
+
     }   
+     
 }
