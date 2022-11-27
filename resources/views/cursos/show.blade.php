@@ -36,13 +36,13 @@
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger"><ion-icon name="trash-outline"></ion-icon> Deletar</button>
                 </form>    
-                @if(Auth::user()->acesso == 'Professor' && $curso->user_id == 99999999999)
+                @if(Auth::user()->acesso == 'Professor' && $curso->user_id == 99999999999 && $curso->status == '1')
                     <form action="/cursos/joinP/{{$curso->id}}" method="POST"> 
                         @csrf
                         @method('PUT')
                         <input type="submit" class="btn btn-primary" value="Assumir curso">
                     </form>
-                @elseif(Auth::user()->acesso == 'Aluno' && $count == 0 && count($cursoAsParticipant) < $curso->maxAlunos)
+                @elseif(Auth::user()->acesso == 'Aluno' && $count == 0 && count($cursoAsParticipant) < $curso->maxAlunos && $curso->status == '1')
                     <form action="/cursos/joinA/{{$curso->id}}" method="POST">
                         @csrf
                         <input type="submit" class="btn btn-primary" value="Confirmar presença">
@@ -52,6 +52,13 @@
                         @csrf
                         @method('PUT')
                         <input type="submit" class="btn btn-primary" value="Desistir do curso">
+                    </form>
+                @endif
+                @if($curso->status == '1')
+                    <form action="/cursos/encerrarC/{{$curso->id}}" method="POST"> 
+                        @csrf
+                        @method('PUT')
+                        <input type="submit" class="btn btn-primary" value="Encerrar matriculas">
                     </form>
                 @endif
             </div>

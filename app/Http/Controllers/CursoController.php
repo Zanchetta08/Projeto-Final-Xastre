@@ -126,6 +126,12 @@ class CursoController extends Controller
         return redirect('/cursos')->with('msg', 'Você deixou de assumir o curso!');
     }
 
+    public function encerrarCurso($id){
+        Curso::findOrFail($id)->update(['status' => '0']);
+
+        return redirect('/cursos')->with('msg', 'Matriculas encerradas!');
+    }
+
     public function dashboard(){
         
         $user = auth()->user();

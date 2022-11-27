@@ -36,5 +36,6 @@ Route::put('/cursos/joinP/{id}', [App\Http\Controllers\CursoController::class,'j
 Route::post('/cursos/joinA/{id}', [App\Http\Controllers\CursoController::class,'joinCursoAluno']);
 Route::delete('/cursos/leaveA/{id}', [App\Http\Controllers\CursoController::class,'leaveCursoAluno']);
 Route::put('/cursos/leaveP/{id}', [App\Http\Controllers\CursoController::class,'leaveCursoProf']);
+Route::put('/cursos/encerrarC/{id}', [App\Http\Controllers\CursoController::class,'encerrarCurso']);
 Route::get('/dashboard', [App\Http\Controllers\CursoController::class,'dashboard']);
 
