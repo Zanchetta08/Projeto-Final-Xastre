@@ -10,6 +10,8 @@
 
 * Pedro Rodolfo da Silva Galvão Santos - RA:22886287
 
+* Mateo Shimizu Arbulu - RA:22021448
+
 # Laravel Template
 
 ### Passo a passo
