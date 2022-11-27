@@ -56,7 +56,7 @@ php artisan key:generate
 ```
 
 
-Migrar as tableas
+Migrar as tabelas
 ```sh
 php artisan migrate
 ```
