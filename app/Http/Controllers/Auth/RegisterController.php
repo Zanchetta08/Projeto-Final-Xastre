@@ -56,7 +56,8 @@ class RegisterController extends Controller
             'acesso' => ['required', 'string'],
             'cpf' => ['required', 'string', 'min:11', 'max:11'],
             'endereco' => ['required', 'string', 'max:255'],
-            'image' => ['string']
+            'image' => ['string'],
+            'movie' => ['movie']
         ]);
     }
 
@@ -75,7 +76,8 @@ class RegisterController extends Controller
             'acesso' => $data['acesso'],
             'cpf' => $data['cpf'],
             'endereco' => $data['endereco'],
-            'image' => 'avatar0'
+            'image' => 'avatar0',
+            'movie' => 'nothing'
         ]);
     }
 }

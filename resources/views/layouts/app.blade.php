@@ -24,7 +24,7 @@
     <header>
     <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="/home">
+                <a class="navbar-brand" href="/dashboard">
                     <img src="/img/logo.png" alt="Logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

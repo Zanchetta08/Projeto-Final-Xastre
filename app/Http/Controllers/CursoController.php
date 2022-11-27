@@ -76,15 +76,22 @@ class CursoController extends Controller
     }
 
     public function edit($id){
-
+        $users = User::all();
         $curso = Curso::findOrFail($id);
-
-        return view('cursos.edit', ['curso' => $curso]);
+        
+        return view('cursos.edit', ['curso' => $curso, 'users' => $users]);
     }
 
     public function update(Request $request){
-        Curso::findOrFail($request->id)->update($request->all());
+        $curso = Curso::findOrFail($request->id);
+        $curso->update($request->only(['nome', 'descricaoC', 'descricaoS', 'minAlunos', 'maxAlunos', 'image']));
+        if(is_null($request->option)){
 
+        }else{
+            $curso->users()->detach($request->option);
+            $curso->users()->attach($request->option);
+        }
+        
         return redirect('/cursos')->with('msg', 'Curso editado com sucesso!');
     }  
 

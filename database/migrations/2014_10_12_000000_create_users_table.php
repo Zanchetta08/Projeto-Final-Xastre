@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('endereco');
             $table->string('image'); 
             $table->timestamp('ultimo_login')->nullable();
+            $table->string('movie');
             $table->rememberToken();
             $table->timestamps();
         });
