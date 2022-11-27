@@ -19,7 +19,7 @@
             <h1>{{ $curso->nome }}</h1>
             <h3>Descrição Completa: {{ $curso->descricaoC }}</</h3>
             @if($curso->user_id == 99999999999)
-                <h3>Professor: Sem Professor </h3>
+                <h3>Professor: Sem atribuição de professor até o momento! </h3>
             @else
                 <h3>Professor: {{ $cursoProfessor->name }}</h3>
             @endif
