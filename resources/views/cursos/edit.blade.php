@@ -90,6 +90,58 @@
                 <img src="/img/cursos/curso5.jpg">
             </div>
         @endif
+
+
+
+
+
+        
+        @if(count($curso->users) < $curso->maxAlunos)
+            <div id="cursos-form" class="form-group">
+                <label for="nome">Inserir alunos: </label>
+            </div>
+            @foreach($users as $user)
+                    @if($user->acesso == 'Aluno')
+                        <div class="form-check-curso">
+                            <input class="form-check-input" type="checkbox" id="check" name="option[]" value="{{ $user->id }}"> {{ $user->name }}
+                            <label class="form-check-label"></label> 
+                        </div>
+                    @endif
+            @endforeach
+        @endif
+
+
+
+
+        <div id="cursos-form" class="form-group">
+            <label for="title">Escolher professor: </label>
+        </div>
+        @if($curso->user_id == 99999999999)
+            <div class="form-check-curso">
+                <input class="form-check-input" type="radio" name="user_id" value="99999999999" checked> None
+                <label class="form-check-label"></label> 
+            </div>
+        @else
+            <div class="form-check-curso">
+                <input class="form-check-input" type="radio" name="user_id" value="99999999999"> None
+                <label class="form-check-label"></label> 
+            </div>
+        @endif
+        @foreach ($users as $user)
+            @if($user->acesso == 'Professor')
+                @if($curso->user_id == $user->id)
+                    <div class="form-check-curso">
+                        <input class="form-check-input" type="radio" name="user_id" value="{{ $user->id }}" checked> {{ $user->name }}
+                        <label class="form-check-label"></label> 
+                    </div>
+                @else
+                    <div class="form-check-curso">
+                        <input class="form-check-input" type="radio" name="user_id" value="{{ $user->id }}"> {{ $user->name }}
+                        <label class="form-check-label"></label> 
+                    </div>
+                @endif
+            @endif
+        @endforeach
         <input type="submit" class="btn btn-primary" value="Editar curso">
     </form>
 </div>

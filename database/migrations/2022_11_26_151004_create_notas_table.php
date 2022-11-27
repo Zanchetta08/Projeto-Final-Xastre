@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('curso_user', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('curso_id');
-            $table->foreignId('user_id');
-            $table->string("notas")->default('0');
+        Schema::create('notas', function (Blueprint $table) {
+            $table->foreignId('curso_user_id');
+            $table->string("notas");
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('curso_user');
+        Schema::dropIfExists('notas');
     }
 };
