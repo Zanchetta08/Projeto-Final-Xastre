@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Curso;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -24,10 +25,6 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home');
-    }
      
     public function show(){
 
@@ -36,7 +33,9 @@ class HomeController extends Controller
 
     public function edit(){
 
-        return view ('users.edit');
+        $movies = Http::get("https://jsonplaceholder.typicode.com/posts");
+
+        return view ('users.edit', ["movies" => json_decode($movies)]);
     }
 
     public function destroy($id) {
@@ -44,18 +43,30 @@ class HomeController extends Controller
         $user = auth()->user();
         $user->cursosAsParticipant()->detach($id);
 
-        return redirect('/home')->with('msg','Perfil excluido com sucesso');
+        return redirect('/cursos')->with('msg','Perfil excluido com sucesso');
     } 
 
     public function update(Request $request){
-        $senha = $request->password;
+
         $user = User::findOrFail($request->id);
-        $user->update($request->all());
-        $user->update(['password' => Hash::make($senha)]);
+        if($user->acesso == 'Aluno'){
+            if(is_null($request->password)){
+                $user->update(['name' => $request->name, 'email' => $request->email, 'cpf' => $request->cpf, 'endereco' => $request->endereco, 'movie' => $request->movie]);
+            }else{
+                $user->update($request->all());
+                $senha = $request->password;
+                $user->update(['password' => Hash::make($senha)]);
+            }
+        }elseif($user->acesso == 'Professor'){
+            if(is_null($request->password)){
+                $user->update(['name' => $request->name, 'email' => $request->email, 'cpf' => $request->cpf, 'endereco' => $request->endereco, 'image' => $request->image]);
+            }else{
+                $user->update($request->all());
+                $senha = $request->password;
+                $user->update(['password' => Hash::make($senha)]);
+            }
+        }
 
-         
-        return redirect('/home');
-
-
+        return redirect('/cursos')->with('msg', 'Perfil editado com sucesso');
     }   
 }

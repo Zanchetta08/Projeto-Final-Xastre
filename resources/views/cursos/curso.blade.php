@@ -26,7 +26,14 @@
             <img src="/img/cursos/{{ $curso->image }}.jpg">
             <div class="card-body">
                 <h5 class="card-title">{{ $curso->nome }}</h5>
-                <p class="card-participants">X Participantes</p>
+                @if(count($curso->users) < $curso->minAlunos && $curso->status == '1')
+                    <h6>Matrículas Abertas - Mínimo de alunos não atingido!</h6>
+                @elseif(count($curso->users) >= $curso->minAlunos && count($curso->users) < $curso->maxAlunos && curso->status == '1') 
+                    <h6>Matrículas Abertas - Curso acontecerá!</h6>
+                @else
+                    <h6>Matrículas Encerradas</h6>
+                @endif
+                <p class="card-participants"> {{ count($curso->users) }} Participantes</p>
                 <a href="/cursos/{{ $curso->id }}" class="btn btn-primary">Saber mais</a>
             </div>
         </div>

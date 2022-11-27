@@ -14,8 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('curso_user', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('curso_id');
             $table->foreignId('user_id');
+            $table->string("nota")->default('0');
             $table->timestamps();
         });
     }

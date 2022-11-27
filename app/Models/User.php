@@ -24,7 +24,8 @@ class User extends Authenticatable
         'acesso',
         'cpf',
         'endereco',
-        'image'
+        'image',
+        'movie'
     ];
 
     /**
@@ -51,6 +52,6 @@ class User extends Authenticatable
     }
 
     public function cursosAsParticipant(){
-        return $this->belongsToMany('\App\Models\Curso');
+        return $this->belongsToMany('\App\Models\Curso')->withPivot('nota');
     }
 }

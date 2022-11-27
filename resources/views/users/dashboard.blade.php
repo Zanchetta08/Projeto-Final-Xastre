@@ -7,9 +7,15 @@
 @guest
 <h1>Você não está logado. Faça o login <a href="/">aqui</a></h1>
 @else
-<div class="col-md-10 offset-md-1 dashboard-title-container">
-    <h1>Cursos que estou participando</h1>
-</div>
+@if(Auth::user()->acesso == 'Aluno')
+    <div class="col-md-10 offset-md-1 dashboard-title-container">
+        <h1>Cursos que estou participando</h1>
+    </div>
+@elseif(Auth::user()->acesso == 'Professor')
+    <div class="col-md-10 offset-md-1 dashboard-title-container">
+        <h1>Cursos que estou ministrando</h1>
+    </div>
+@endif
 <div class="col-md-10 offset-md-1 dashboard-cursos-container">
 @if(Auth::user()->acesso == 'Aluno')
     @if(count($cursosAsParticipant) > 0)
@@ -19,6 +25,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Participantes</th>
+                    <th scope="col">Nota</th>
                     <th scope="col">#</th>
                     </tr>
             </thead>
@@ -28,11 +35,12 @@
                         <td scropt="row">{{ $loop->index + 1}}</td>
                         <td><a href="/cursos/{{ $curso->id }}">{{ $curso->nome }}</a></td>
                         <td>{{ count($curso->users) }}/{{ $curso->maxAlunos }}</td>
+                        <td>{{ $curso->pivot->nota }}</td>
                         <td>
                             <form action="/cursos/leaveA/{{$curso->id}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger"><ion-icon name="trash-outline"></ion-icon>Sair do curso</button>
+                                <button type="submit" class="btn btn-danger"><ion-icon name="trash-outline"></ion-icon>Sair</button>
                             </form>
                         </td>
                     </tr>
@@ -40,7 +48,7 @@
             </tbody>
         </table>
     @else
-        <p class="aviso">Você ainda não tem cursos a fazer, <a href="/cursos">confirme presença em algum</a></p>
+        <h4 class="aviso">Você ainda não tem cursos a fazer, <a href="/cursos"class="btn btn-primary">confirme presença em algum</a></h4>
     @endif
 @elseif(Auth::user()->acesso == 'Professor')
     @if(count($cursosAsProfessor) > 0)

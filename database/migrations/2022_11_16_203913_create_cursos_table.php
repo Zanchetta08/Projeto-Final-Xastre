@@ -23,10 +23,8 @@ return new class extends Migration
             $table->string("minAlunos");
             $table->string("maxAlunos");
             $table->string("image");
+            $table->string("status")->default('1');
             $table->foreignId('user_id');
-
-
-      
         });
     }
 

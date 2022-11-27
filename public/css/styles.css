@@ -1,14 +1,8 @@
-#app {
-    width: 100vw;
-    height: 100vh;
-    background: url("../img/wallpaperflare.com_wallpaper.jpg");
-    background-size: cover;
-}
 body{
-    
     min-height: 100vh;
     padding-bottom: 100px;
     position: relative;
+    background-image: radial-gradient(circle, #43094f, #311343, #231534, #191424, #111111);
 }
 
 .row{
@@ -78,7 +72,7 @@ header{
 }
 
 #cursos-form{
-    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .nav-item{
@@ -166,12 +160,12 @@ h1 {
 }
 
 .dashboard-cursos-container th {
-    width: 25%;
+    width: 20%;
     color: #fff;
 }
 
 .dashboard-cursos-container td {
-    width: 25%;
+    width: 20%;
     color: #fff;
 }
 
@@ -179,11 +173,15 @@ h1 {
     color: #fff;
 }
 
-#image-container img
-{
+#image-container img{
     width: 375px;
     border-radius: 1000px;
 }
+
+.form-check-curso{
+    color: #fff;
+}
+
 
 
 
