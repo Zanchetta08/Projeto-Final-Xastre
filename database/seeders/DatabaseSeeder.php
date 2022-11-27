@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder
 
             'name' => "secretaria",
             'email' => "secretaria@x6dev.edu",
-            'password' => "Secretaria123",
-            'acesso' => "secretaria",
-            'cpf' => "1231231232",
+            'password' => Hash::make("senha"),
+            'acesso' =>("Secretaria"),
+            'cpf' => "12312312322",
             'endereco' => "rua",
             'image' => 'avatar0'
         

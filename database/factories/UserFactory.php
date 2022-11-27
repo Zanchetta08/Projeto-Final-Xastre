@@ -23,15 +23,17 @@ class UserFactory extends Factory
     public function definition()
     {
            $faker = Faker::create();
+           $senha = $faker->password;
        return [
             
                 'name' => $faker->name,
                 'email' => $faker->email,
-                'password' => $faker->password,
+                'password' => Hash::make($senha),
                 'acesso' => "Aluno",
-                'cpf'=> ("12312312332"),
+                'cpf'=> random_int(10000000000,99999999999),
                 'endereco' => $faker->address,
                 'image' => 'avatar0',
+                'movie' => 'nothing',
            
                
             ];
@@ -57,14 +59,16 @@ class UserFactory extends Factory
     {
             return $this->state (function (array $attributes){
                     
+
                         $faker = Faker::create();
+                        $senha = $faker->password;
                             return [
                             
                                 'name' => $faker->name,
                                 'email' => $faker->email,
-                                'password' => $faker->password,
+                                'password' => Hash::make($senha),
                                 'acesso' => "Professor",
-                                'cpf'=> ("12312312332"),
+                                'cpf'=> random_int(10000000000,99999999999),
                                 'endereco' => $faker->address,
                                 'image' => 'avatar0',
                         
