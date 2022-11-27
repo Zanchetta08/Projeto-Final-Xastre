@@ -23,7 +23,11 @@
             <h3>Ultimo login: {{ Auth::user()->ultimo_login }}</</h3>
 
             @if(Auth::user()->acesso == 'Aluno')
-                <h3>Filme: {{ Auth::user()->movie }}</h3>
+                @if(Auth::user()->movie == 'nothing')
+                    <h3>Filme: O filme ainda não foi escolhido.</h3>
+                @else
+                    <h3>Filme: {{ Auth::user()->movie }}</h3>
+                @endif
             @endif
 
             <div class="buttons-container">

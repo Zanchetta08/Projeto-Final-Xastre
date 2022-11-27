@@ -33,7 +33,7 @@ class HomeController extends Controller
     } 
 
     public function edit(){
-        
+
         $movies = Http::get("https://jsonplaceholder.typicode.com/posts");
 
         return view ('users.edit', ["movies" => json_decode($movies)]);
@@ -49,12 +49,22 @@ class HomeController extends Controller
 
     public function update(Request $request){
         $user = User::findOrFail($request->id);
-        if(is_null($request->password)){
-            $user->update(['name' => $request->name, 'email' => $request->email, 'cpf' => $request->cpf, 'endereco' => $request->endereco, 'image' => $request->image, 'movie' => $request->movie]);
-        }else{
-            $user->update($request->all());
-            $senha = $request->password;
-            $user->update(['password' => Hash::make($senha)]);
+        if($user->acesso == 'Aluno'){
+            if(is_null($request->password)){
+                $user->update(['name' => $request->name, 'email' => $request->email, 'cpf' => $request->cpf, 'endereco' => $request->endereco, 'movie' => $request->movie]);
+            }else{
+                $user->update($request->all());
+                $senha = $request->password;
+                $user->update(['password' => Hash::make($senha)]);
+            }
+        }elseif($user->acesso == 'Professor'){
+            if(is_null($request->password)){
+                $user->update(['name' => $request->name, 'email' => $request->email, 'cpf' => $request->cpf, 'endereco' => $request->endereco, 'image' => $request->image]);
+            }else{
+                $user->update($request->all());
+                $senha = $request->password;
+                $user->update(['password' => Hash::make($senha)]);
+            }
         }
 
         return redirect('/cursos')->with('msg', 'Perfil editado com sucesso');

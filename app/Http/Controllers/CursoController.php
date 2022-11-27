@@ -84,7 +84,7 @@ class CursoController extends Controller
 
     public function update(Request $request){
         $curso = Curso::findOrFail($request->id);
-        $curso->update($request->only(['nome', 'descricaoC', 'descricaoS', 'minAlunos', 'maxAlunos', 'image']));
+        $curso->update($request->only(['nome', 'descricaoC', 'descricaoS', 'minAlunos', 'maxAlunos', 'image', 'user_id']));
         if(is_null($request->option)){
 
         }else{

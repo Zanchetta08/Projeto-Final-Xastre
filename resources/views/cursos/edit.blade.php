@@ -95,19 +95,18 @@
 
 
 
+        
         @if(count($curso->users) < $curso->maxAlunos)
             <div id="cursos-form" class="form-group">
                 <label for="nome">Inserir alunos: </label>
             </div>
             @foreach($users as $user)
-                @foreach($curso->users as $aluno)
-                    @if($user->acesso == 'Aluno' && $aluno->id != $user->id)
+                    @if($user->acesso == 'Aluno')
                         <div class="form-check-curso">
                             <input class="form-check-input" type="checkbox" id="check" name="option[]" value="{{ $user->id }}"> {{ $user->name }}
                             <label class="form-check-label"></label> 
                         </div>
                     @endif
-                @endforeach
             @endforeach
         @endif
 
