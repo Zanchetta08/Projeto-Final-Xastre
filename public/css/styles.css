@@ -161,12 +161,12 @@ h1 {
 }
 
 .dashboard-cursos-container th {
-    width: 25%;
+    width: 20%;
     color: #fff;
 }
 
 .dashboard-cursos-container td {
-    width: 25%;
+    width: 20%;
     color: #fff;
 }
 
@@ -182,6 +182,7 @@ h1 {
 .form-check-curso{
     color: #fff;
 }
+
 
 
 

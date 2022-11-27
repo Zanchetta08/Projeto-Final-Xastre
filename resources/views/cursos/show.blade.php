@@ -23,6 +23,12 @@
             @else
                 <h3>Professor: {{ $cursoProfessor->name }}</h3>
             @endif
+            <h3>Alunos:</h3>
+            <ul id="lista-alunos">
+                @foreach($cursoAsParticipant as $aluno)
+                    <li>Nome: {{$aluno->name}} - Nota: {{ $aluno->pivot->nota }}</li>
+                @endforeach
+            </ul>
             <div class="buttons-container">
                 <a href="/cursos/edit/{{ $curso->id }}" class="btn btn-primary"><ion-icon name="pencil-outline"></ion-icon> Editar</a>
                 <form action="/cursos/{{ $curso->id }}" method="POST">
@@ -50,7 +56,6 @@
                 @endif
             </div>
         </div>
-
     </div>
 </div>
 

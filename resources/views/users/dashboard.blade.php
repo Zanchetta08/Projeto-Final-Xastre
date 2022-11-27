@@ -25,6 +25,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Participantes</th>
+                    <th scope="col">Nota</th>
                     <th scope="col">#</th>
                     </tr>
             </thead>
@@ -34,11 +35,12 @@
                         <td scropt="row">{{ $loop->index + 1}}</td>
                         <td><a href="/cursos/{{ $curso->id }}">{{ $curso->nome }}</a></td>
                         <td>{{ count($curso->users) }}/{{ $curso->maxAlunos }}</td>
+                        <td>{{ $curso->pivot->nota }}</td>
                         <td>
                             <form action="/cursos/leaveA/{{$curso->id}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger"><ion-icon name="trash-outline"></ion-icon>Sair do curso</button>
+                                <button type="submit" class="btn btn-danger"><ion-icon name="trash-outline"></ion-icon>Sair</button>
                             </form>
                         </td>
                     </tr>

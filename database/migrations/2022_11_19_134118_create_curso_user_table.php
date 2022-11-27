@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('curso_id');
             $table->foreignId('user_id');
-            $table->string("notas")->default('0');
+            $table->string("nota")->default('0');
             $table->timestamps();
         });
     }
