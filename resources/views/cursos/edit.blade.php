@@ -7,6 +7,7 @@
 @guest
 <h1>Você não está logado. Faça o login <a href="/">aqui</a></h1>
 @else
+@if(Auth::user()->acesso == 'Secretaria' || Auth::user()->acesso == 'Admin')
 <div id="cursos-create-container" class="col-md-6 offset-md-3">
     <h1>Editando: {{ $curso->nome }}</h1>
     <form action="/cursos/update/{{ $curso->id }}" method="POST">
@@ -154,6 +155,7 @@
         <input type="submit" class="btn btn-primary" value="Editar curso">
     </form>
 </div>
+@endif
 
 
 @endguest

@@ -42,19 +42,20 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
                         @else
+                            @if(Auth::user()->acesso == 'Secretaria' || Auth::user()->acesso == 'Admin')
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/register">Registrar</a>
+                                    </li>
+                            @endif
                             <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         Cursos
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/cursos/inserir">Inserir curso</a>
+                                        @if(Auth::user()->acesso == 'Secretaria')
+                                            <a class="dropdown-item" href="/cursos/inserir">Inserir curso</a>
+                                        @endif
                                     <a class="dropdown-item" href="/cursos">Ver cursos</a>
                             </li>
                             <li class="nav-item dropdown">

@@ -7,6 +7,7 @@
 @guest
 <h1>Você não está logado. Faça o login <a href="/">aqui</a></h1>
 @else
+@if(Auth::user()->acesso != 'Secretaria')
 <div id="edit-create-container" class="col-md-6 offset-md-3">
     <h1>Edite as informações</h1>
     <form action="/users/update/{{Auth::user()->id}}" method="POST">
@@ -42,7 +43,7 @@
 
 
 
-        @if(Auth::user()->acesso == 'Professor')
+        @if(Auth::user()->acesso == 'Professor' || Auth::user()->acesso == 'Admin')
             <div id="cursos-form" class="form-group">
                 <label for="title">Avatares:</label>
             </div>
@@ -135,7 +136,7 @@
                 </div>
             @endif
         @endif
-        @if(Auth::user()->acesso == 'Aluno')
+        @if(Auth::user()->acesso == 'Aluno' || Auth::user()->acesso == 'Admin')
             <div id="cursos-form" class="form-group">
                 <label for="title">Filmes:</label>
             </div>
@@ -165,12 +166,10 @@
             @endforeach
         @endif
 
-
-
             <input type="submit" class="btn btn-primary" value="Salvar">
     </form>
 </div>
-
+@endif
 @endguest
 
 @endsection

@@ -30,31 +30,21 @@
                 @endforeach
             </ul>
             <div class="buttons-container">
-                <a href="/cursos/edit/{{ $curso->id }}" class="btn btn-primary"><ion-icon name="pencil-outline"></ion-icon> Editar</a>
-                <form action="/cursos/{{ $curso->id }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger"><ion-icon name="trash-outline"></ion-icon> Deletar</button>
-                </form>    
-                @if(Auth::user()->acesso == 'Professor' && $curso->user_id == 99999999999 && $curso->status == '1')
-                    <form action="/cursos/joinP/{{$curso->id}}" method="POST"> 
+                @if(Auth::user()->acesso == 'Secretaria' || Auth::user()->acesso == 'Admin')
+                    <a href="/cursos/edit/{{ $curso->id }}" class="btn btn-primary"><ion-icon name="pencil-outline"></ion-icon> Editar</a>
+                    <form action="/cursos/{{ $curso->id }}" method="POST">
                         @csrf
-                        @method('PUT')
-                        <input type="submit" class="btn btn-primary" value="Assumir curso">
-                    </form>
-                @elseif(Auth::user()->acesso == 'Aluno' && $count == 0 && count($cursoAsParticipant) < $curso->maxAlunos && $curso->status == '1')
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger"><ion-icon name="trash-outline"></ion-icon> Deletar</button>
+                    </form>    
+                @endif
+                @if((Auth::user()->acesso == 'Aluno' || Auth::user()->acesso == 'Admin') && $count == 0 && count($cursoAsParticipant) < $curso->maxAlunos && $curso->status == '1')
                     <form action="/cursos/joinA/{{$curso->id}}" method="POST">
                         @csrf
                         <input type="submit" class="btn btn-primary" value="Confirmar presença">
                     </form>
-                @elseif(Auth::user()->acesso == 'Professor' && $curso->user_id == Auth::user()->id)
-                     <form action="/cursos/leaveP/{{$curso->id}}" method="POST"> 
-                        @csrf
-                        @method('PUT')
-                        <input type="submit" class="btn btn-primary" value="Desistir do curso">
-                    </form>
                 @endif
-                @if($curso->status == '1')
+                @if($curso->status == '1' && (Auth::user()->acesso == 'Secretaria' || Auth::user()->acesso == 'Admin'))
                     <form action="/cursos/encerrarC/{{$curso->id}}" method="POST"> 
                         @csrf
                         @method('PUT')

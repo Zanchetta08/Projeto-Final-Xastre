@@ -17,7 +17,7 @@
     </div>
 @endif
 <div class="col-md-10 offset-md-1 dashboard-cursos-container">
-@if(Auth::user()->acesso == 'Aluno')
+@if(Auth::user()->acesso == 'Aluno' || Auth::user()->acesso == 'Admin')
     @if(count($cursosAsParticipant) > 0)
         <table class="table">
             <thead>
@@ -48,9 +48,10 @@
             </tbody>
         </table>
     @else
-        <h4 class="aviso">Você ainda não tem cursos a fazer, <a href="/cursos"class="btn btn-primary">confirme presença em algum</a></h4>
+        <h4 class="aviso">Você ainda não tem cursos a fazer, <a href="/cursos">confirme presença em algum</a></h4>
     @endif
-@elseif(Auth::user()->acesso == 'Professor')
+@endif
+@if(Auth::user()->acesso == 'Professor' || Auth::user()->acesso == 'Admin')
     @if(count($cursosAsProfessor) > 0)
         <table class="table">
             <thead>

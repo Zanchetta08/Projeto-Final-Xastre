@@ -3,6 +3,11 @@
 @section('title', 'Register')
 
 @section('content')
+
+@guest
+<h1>Você não está logado. Faça o login <a href="/">aqui</a></h1>
+@else
+@if(Auth::user()->acesso == 'Secretaria' || Auth::user()->acesso == 'Admin')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -126,4 +131,6 @@
         </div>
     </div>
 </div>
+@endif
+@endguest
 @endsection
