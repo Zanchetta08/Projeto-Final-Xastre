@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string("nome");
+
             $table->string("descricaoS");
             $table->string("descricaoC");
             $table->string("minAlunos");

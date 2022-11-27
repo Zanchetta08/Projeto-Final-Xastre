@@ -28,6 +28,7 @@ Route::delete('/users/{id}', [App\Http\Controllers\HomeController::class,'destro
 Route::get('/cursos', [App\Http\Controllers\CursoController::class, 'index']);
 Route::get('/cursos/inserir', [App\Http\Controllers\CursoController::class, 'create']);
 Route::post('/cursos', [App\Http\Controllers\CursoController::class, 'store']);
+
 Route::get('/cursos/{id}', [App\Http\Controllers\CursoController::class, 'show']);
 Route::delete('/cursos/{id}', [App\Http\Controllers\CursoController::class,'destroy']);
 Route::get('/cursos/edit/{id}', [App\Http\Controllers\CursoController::class,'edit']);
@@ -38,4 +39,5 @@ Route::delete('/cursos/leaveA/{id}', [App\Http\Controllers\CursoController::clas
 Route::put('/cursos/leaveP/{id}', [App\Http\Controllers\CursoController::class,'leaveCursoProf']);
 Route::put('/cursos/encerrarC/{id}', [App\Http\Controllers\CursoController::class,'encerrarCurso']);
 Route::get('/dashboard', [App\Http\Controllers\CursoController::class,'dashboard']);
+
 

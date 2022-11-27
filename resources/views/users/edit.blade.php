@@ -32,10 +32,16 @@
             <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço" value="{{ Auth::user()->endereco }}">
         </div>
 
+
+
+
         <div class="form-group">
              <label for="title">Senha</label>
              <input type="password" class="form-control" id="password" name="password" placeholder="Nova Senha">
         </div>
+
+
+
         @if(Auth::user()->acesso == 'Professor')
             <div id="cursos-form" class="form-group">
                 <label for="title">Avatares:</label>
@@ -158,6 +164,9 @@
                 @endif
             @endforeach
         @endif
+
+
+
             <input type="submit" class="btn btn-primary" value="Salvar">
     </form>
 </div>

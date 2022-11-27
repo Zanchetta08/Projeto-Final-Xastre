@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Curso;
+
 use App\Models\User;
 
 class CursoController extends Controller
@@ -20,6 +21,7 @@ class CursoController extends Controller
         }
 
         return view ("cursos.curso",['cursos'=> $cursos, 'search' => $search]);
+
     }
 
     public function create(){
@@ -38,9 +40,11 @@ class CursoController extends Controller
         $curso->maxAlunos = $request->maxAlunos;
         $curso->image = $request->image;
         $curso->user_id = 99999999999;
+
        
 
         $curso->save();
+
 
         return redirect('/cursos')->with('msg', 'Curso criado com sucesso!');
 
@@ -140,5 +144,6 @@ class CursoController extends Controller
         $cursosAsProfessor = $cursos->where('user_id', $user->id);
 
         return view('users.dashboard', ['cursosAsParticipant' => $cursosAsParticipant, 'cursosAsProfessor' => $cursosAsProfessor]);
+
     }
 }

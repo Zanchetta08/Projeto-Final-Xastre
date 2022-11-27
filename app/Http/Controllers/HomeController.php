@@ -8,7 +8,6 @@ use App\Models\Curso;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 
-
 class HomeController extends Controller
 {
     /**
@@ -48,6 +47,7 @@ class HomeController extends Controller
     } 
 
     public function update(Request $request){
+
         $user = User::findOrFail($request->id);
         if($user->acesso == 'Aluno'){
             if(is_null($request->password)){

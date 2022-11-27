@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('title', 'Cursos')
 
 @section('content')
@@ -50,5 +51,6 @@
     </div>
 @endif
 @endguest
+
 
 @endsection
