@@ -23,12 +23,17 @@
             @else
                 <h3>Professor: {{ $cursoProfessor->name }}</h3>
             @endif
+            @if(Auth::user()->acesso == 'Secretaria' || Auth::user()->acesso == 'Admin' || Auth::user()->acesso == 'Professor')
             <h3>Alunos:</h3>
             <ul id="lista-alunos">
+                @if(count($cursoAsParticipant) == 0)
+                    <li>Sem alunos matriculados</li>
+                @endif
                 @foreach($cursoAsParticipant as $aluno)
                     <li>Nome: {{$aluno->name}} - Nota: {{ $aluno->pivot->nota }}</li>
                 @endforeach
             </ul>
+            @endif
             <div class="buttons-container">
                 @if(Auth::user()->acesso == 'Secretaria' || Auth::user()->acesso == 'Admin')
                     <a href="/cursos/edit/{{ $curso->id }}" class="btn btn-primary"><ion-icon name="pencil-outline"></ion-icon> Editar</a>
@@ -44,7 +49,7 @@
                         <input type="submit" class="btn btn-primary" value="Confirmar presença">
                     </form>
                 @endif
-                @if($curso->status == '1' && (Auth::user()->acesso == 'Secretaria' || Auth::user()->acesso == 'Admin'))
+                @if($curso->status == '1' && count($curso->users) < $curso->maxAlunos && (Auth::user()->acesso == 'Secretaria' || Auth::user()->acesso == 'Admin'))
                     <form action="/cursos/encerrarC/{{$curso->id}}" method="POST"> 
                         @csrf
                         @method('PUT')

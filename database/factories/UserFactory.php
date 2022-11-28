@@ -28,7 +28,7 @@ class UserFactory extends Factory
             
                 'name' => $faker->name,
                 'email' => $faker->email,
-                'password' => Hash::make($senha),
+                'password' => Hash::make("123123123"),
                 'acesso' => "Aluno",
                 'cpf'=> random_int(10000000000,99999999999),
                 'endereco' => $faker->address,
@@ -66,7 +66,7 @@ class UserFactory extends Factory
                             
                                 'name' => $faker->name,
                                 'email' => $faker->email,
-                                'password' => Hash::make($senha),
+                                'password' => Hash::make("123123123"),
                                 'acesso' => "Professor",
                                 'cpf'=> random_int(10000000000,99999999999),
                                 'endereco' => $faker->address,
@@ -90,7 +90,7 @@ class UserFactory extends Factory
                             
                                 'name' => "Admin",
                                 'email' => "Admin@x6dev.edu",
-                                'password' => "admin123",
+                                'password' => Hash::make("123123123"),
                                 'acesso' => "Admin",
                                 'cpf'=> random_int(10000000000,99999999999),
                                 'endereco' => $faker->address,

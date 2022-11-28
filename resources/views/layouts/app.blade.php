@@ -53,7 +53,7 @@
                                         Cursos
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        @if(Auth::user()->acesso == 'Secretaria')
+                                        @if(Auth::user()->acesso == 'Secretaria' || Auth::user()->acesso == 'Admin')
                                             <a class="dropdown-item" href="/cursos/inserir">Inserir curso</a>
                                         @endif
                                     <a class="dropdown-item" href="/cursos">Ver cursos</a>

@@ -1,13 +1,4 @@
 
-
-#app {
-    width: 100vw;
-    height: 100vh;
-    background: url("../img/wallpaperflare.com_wallpaper.jpg");
-    background-size: cover;
-}
-
-
 body{
     min-height: 100vh;
     padding-bottom: 100px;
